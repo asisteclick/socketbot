@@ -50,3 +50,12 @@ socket.on('connect', function() {
     });
 });
 ```
+
+## Recepción de respuesta del bot
+
+```
+// evento que recepciona una respuesta del bot
+socket.on('agent says', function(data) {
+    console.log(data)
+});
+```
