@@ -6,4 +6,4 @@ Adaptador web para conectar con un chatbot de AsisteClick y controlar la recepci
 - Modificar y controlar el look & feel web
 - Agregar un canal alternativo (por ejemplo, voice)
 
-
+Puedes probarlo chateando con este bot: https://app.asisteclick.com/tools/socketbot/sample.php?phone=&aspid=11&bot_id=4155&lang=es
