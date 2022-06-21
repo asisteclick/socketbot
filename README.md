@@ -27,6 +27,7 @@ El adaptador se compone de tres partes:
 - Inicialización de una conversación
 - Recepción de respuestas del bot
 - Envío de preguntas al bot
+- Finalizar una conversación
 
 ## Conexión con Websocket
 
@@ -80,6 +81,12 @@ var data = {
 }
 // Envio la pregunta al servidor
 socket.emit('socketbot customer says', data); 
+```
+
+## Finalizar una conversación
+
+```
+socket.emit('client: client closes chat', {token: session_token, session_id: session_id} );
 ```
 
 # Ejemplo
