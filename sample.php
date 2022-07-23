@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Origin: *');
     $phone = $_GET['phone'];
     $aspid = $_GET['aspid']; 
     $lang = $_GET['lang'];
@@ -39,7 +39,7 @@
 		<div id="messages" class="row"></div>
     </div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
@@ -54,7 +54,7 @@
     // socket connected
     socket.on('connect', function() {
 
-		// inits bot session
+	// inits bot session
         var data_in = { 
             source: "PHONEMYBOT",
             fingerprint: "<?=$phone?>", 
@@ -65,10 +65,10 @@
             customer_phone: "<?=$phone?>",
             language: "<?=$lang?>"
         };
-		socket.emit('socketbot new chat request', data_in, function(data) {
+	    socket.emit('socketbot new chat request', data_in, function(data) {
             session_id = data.session_id;
             session_token = data.session_token;
-			$("#message").prop("disabled", false);
+	    $("#message").prop("disabled", false);
             log("ID de sesión:", data.session_id);
         });
 
@@ -76,14 +76,14 @@
 
     // socket listens to bot messages
     socket.on('agent says', function(data) {
-		$("#message").prop("disabled", false);
-        log("Bot:", data.msg, data);
+    	$("#message").prop("disabled", false);
+    	log("Bot:", data.msg, data);
     });
 
     // sends a message to the bot
     $("#send_message").click(function() {
         var message = $("#message").val();
-		$("#message").prop("disabled", true);
+	$("#message").prop("disabled", true);
         var data = {
             token: session_token, 
             session_id: session_id, 
@@ -96,13 +96,13 @@
 
     // log conversation to the screen
     function log(who, what, data) { 
-		what = (what) ? what : "";
-		data = (data) ? `<br/><span style="color:lightgray">${JSON.stringify(data)}</span>` : "";
+	what = (what) ? what : "";
+	data = (data) ? `<br/><span style="color:lightgray">${JSON.stringify(data)}</span>` : "";
         $("#messages").prepend(`
-        	<div class="col-md-12" style="margin-top: 20px;">
-                <b>${who}</b> ${what}
-				${data}
-            </div>
+           <div class="col-md-12" style="margin-top: 20px;">
+               <b>${who}</b> ${what}
+	       ${data}
+           </div>
         `);
     }
     </script>         
